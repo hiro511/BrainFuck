@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 void init(char ary[]);
 int parse(char *ptr, FILE *fp);
 char* checkChar(int c, char *ptr, FILE *fp);
@@ -6,18 +7,18 @@ void goEnd(FILE *fp);
 
 int main(int argc, char *argv[]){
     char ary[1000];
-    FILE *fp;
-    
+    FILE *fp = NULL;
+
     init(ary);
     if(argc>1){
         fp = fopen(argv[1], "r");
         if(fp==NULL){
             printf("failed to open \"%s\"\n", argv[1]);
-	    exit(1);
-	}
+	          exit(1);
+	      }
         parse(ary, fp);
     }else
-        printf("ファイル名を指定してください\n");
+        printf("specify a brain fuck program\n");
     fclose(fp);
     return 0;
 }
@@ -68,4 +69,3 @@ void goEnd(FILE *fp){
         }
     }
 }
-
